@@ -13,7 +13,7 @@ const typeDefs = `
         characters: [Character]!
 
         # Find character by Id
-        character (id: Int) : Character
+        character (id: Int, name: String) : Character
     }
 
     type Character { 
@@ -21,7 +21,7 @@ const typeDefs = `
 
         # Marvel API Identifier
         marvelId: Int
-        name: String 
+        name: String
         
         # Known birthdates
         birthdate: Date  @formattableDate

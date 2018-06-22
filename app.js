@@ -7,7 +7,6 @@ const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { execute, subscribe } = require('graphql');
 const { makeExecutableSchema } = require('graphql-tools');
 const { SubscriptionServer } = require('subscriptions-transport-ws')
-
 const FormattableDateDirective = require('./directives/formattableDate')
 
 const resolvers = require('./resolvers')
@@ -60,7 +59,10 @@ ws.listen(PORT, () => {
   new SubscriptionServer({
     execute,
     subscribe,
-    schema
+    schema,
+    onConnect: (connectionParams,  webSocket) => {
+      // check for auth here connectionParams.authToken
+    }
   }, {
       server: ws,
       path: '/subscriptions'
