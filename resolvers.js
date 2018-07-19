@@ -16,6 +16,8 @@ var marvel = api.createClient({
     privateKey: process.env.MARVEL_PRIVATE_KEY
 });
 
+// var marvel = {}
+
 //data loader -- batching / data fetching
 const hero = new Dataloader(ids => findByIds(ids))
 
